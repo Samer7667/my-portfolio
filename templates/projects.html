@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>🚀 مشاريعي السابقة</h1>
-        <p>هنا بعض المشاريع التي عملت عليها:</p>
+    <div class="projects">
+    {% for project in user.projects %}
+        {% if project.url %}
+            <a href="{{ project.url }}" target="_blank">🔗 {{ project.name }}</a>
+        {% else %}
+            <a href="{{ url_for(project.route) }}">🔗 {{ project.name }}</a>
+        {% endif %}
+    {% endfor %}
+</div>
 
-        <div class="projects">
-            {% for project in user.projects %}
-                <a href="{{ url_for(project.route) }}">🔗 {{ project.name }}</a>
-            {% endfor %}
-        </div>
 
         <a href="/">🔙 العودة إلى الصفحة الرئيسية</a>
     </div>
