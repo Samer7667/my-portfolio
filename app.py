@@ -15,9 +15,11 @@ user_info = {
         {"name": "طلب خدمة", "url": "https://forms.gle/wBBDcbqeXkXKwC8YA"},
     ],
     "projects": [
-        {"name": "موقع التاكسي", "route": "taxi"},
-        {"name": "المتجر الإلكتروني", "route": "ecommerce"}
-    ]
+    {"name": "موقع التاكسي", "url": "https://fayzo.onrender.com/"},
+    {"name": "المتجر الإلكتروني", "url": "https://timora.onrender.com/"},
+    {"name": "اطلب وايت", "url": "https://atlobwhite.onrender.com/"}
+]
+
 }
 
 @app.route("/")
