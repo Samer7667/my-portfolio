@@ -7,16 +7,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>🚖 موقع التاكسي</h1>
-        <p>مشروع التاكسي صممته انا خصيصًا لدعم السائقين والركاب في معرفة مستحقاتهم المالية بناءً على المسافة والزمن المستغرق، وذلك بطريقة دقيقة وعادلة</p>
-        
-        <!-- ✅ إضافة زر لزيارة الموقع على Render -->
-        <a href="https://fayzo.onrender.com" target="_blank">🌍 زيارة الموقع</a>
-        
-        <br>
+    <div class="projects">
+    {% for project in user.projects %}
+        {% if project.url %}
+            <a href="{{ project.url }}" target="_blank">🔗 {{ project.name }}</a>
+        {% else %}
+            <a href="{{ url_for(project.route) }}">🔗 {{ project.name }}</a>
+        {% endif %}
+    {% endfor %}
+</div>
 
-        <a href="/">🔙 العودة إلى الصفحة الرئيسية</a>
-    </div>
 </body>
 </html>
