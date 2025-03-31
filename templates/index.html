@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programmer Samer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename=user.profile_img) }}" alt="صورتك الشخصية" class="profile-img">
+        <h1>{{ user.name }}</h1>
+        <p>{{ user.bio }}</p>
+
+        <div class="links">
+            {% for link in user.links %}
+                {% if link.name == "مشاريعي السابقة" %}
+                    <a href="{{ url_for('projects') }}">🚀 {{ link.name }}</a>
+                {% else %}
+                    <a href="{{ link.url }}" target="_blank">🔗 {{ link.name }}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <script>
+        fetch("https://statistics-y5qf.onrender.com/api/track/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                site_name: "my-portfolio" // غيّره لكل موقع (fayzo, timora)
+            })
+        }).catch(error => console.log("خطأ في إرسال البيانات: " + error));
+    </script>
+    
+</body>
+</html>

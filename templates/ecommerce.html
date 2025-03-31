@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشروع المتجر الإلكتروني</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="projects">
+        {% for project in user.projects %}
+            {% if project.url %}
+                <a href="{{ project.url }}" target="_blank">🔗 {{ project.name }}</a>
+            {% else %}
+                <a href="{{ url_for(project.route) }}">🔗 {{ project.name }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+</body>
+</html>
